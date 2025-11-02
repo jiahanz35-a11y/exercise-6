@@ -2,167 +2,194 @@
 <html>
 <head>
 <title>Exercise 6: Banh Mi, menus, and layout</title>
-
-<!-- Google Fonts -->
+<!-- This is embed code for Google fonts, take a look at  https://fonts.google.com/ for more info, you can just pick fonts and get an embed code which you use here. See how I am controlling them from <style> most of the CSS is just pasted in from Google and I have made tweaks to the weights and added other bits. This is what we will learn next week.-->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Oswald:wght@500&family=Raleway:wght@400;600&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">  
 <style>
-/* -------- GENERAL PAGE STYLE -------- */
-body {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
   font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
   font-size: 16px;
   width: 960px;
-  margin: 0 auto; /* center entire page */
-  background-color: #faf9f6;
-  color: #333;
-  line-height: 1.5;
-  padding: 20px;
 }
-
-/* -------- SITE TITLE -------- */
-#site-title {
+  
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+  }
+  
+  h1 {
   font-family: "Oswald", sans-serif;
-  font-size: 48px;
-  text-align: center;
-  color: #c75b39;
-  margin-bottom: 10px;
-}
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  }
+  
+  h2 {
+    font-family: "Oswald", sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #2c3e50;
+  }
+  
+  #site-title {
+    text-align: center;
+    font-size: 3.5rem;
+    margin: 30px 0 20px 0;
+    color: #c0392b;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  nav {
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    background-color: #2c3e50;
+    margin-bottom: 30px;
+    border-radius: 5px;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-/* -------- NAVIGATION BAR -------- */
-nav ul {
-  list-style: none;              /* remove bullets */
-  padding: 0;
-  margin: 0;
-  display: flex;                 /* make items horizontal */
-  justify-content: center;       /* center horizontally */
-  background-color: #f2d1a8;
-  border-radius: 8px;
-}
-
-nav li {
-  margin: 0 20px;                /* spacing between items */
-}
-
-nav a {
-  text-decoration: none;         /* remove underline */
-  color: #333;
-  font-family: "Raleway", sans-serif;
-  font-weight: 600;
-  padding: 14px 10px;
-  display: inline-block;
-}
-
-nav a:hover {
-  color: white;
-  background-color: #c75b39;     /* hover effect */
-  border-radius: 5px;
-}
-
-/* -------- HERO HEADING -------- */
-h1 {
-  text-align: center;
-  font-weight: 400;
-  font-size: 22px;
-  line-height: 1.6;
-  color: #555;
-  max-width: 800px;
-  margin: 30px auto;
-}
-
-/* -------- GRID LAYOUT -------- */
-.sandwich-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* 2 per row */
-  gap: 20px;
-  margin: 30px 0;
-}
-
-.sandwich {
-  background-color: #fff;
-  padding: 15px;
-  text-align: center;
-  border-radius: 10px;
-  box-shadow: 0 0 8px rgba(0,0,0,0.1);
-}
-
-.sandwich img {
-  width: 100%;
-  max-width: 250px;
-  border-radius: 10px;
-  margin-bottom: 10px;
-}
-
-.sandwich h2 {
-  font-family: "Oswald", sans-serif;
-  font-size: 20px;
-  color: #c75b39;
-  margin: 10px 0 5px;
-}
-
-.sandwich p {
-  font-size: 15px;
-  color: #444;
-  margin: 0 10px 10px;
-}
-
-/* -------- FOOTER -------- */
-footer {
-  background-color: #c75b39;
-  color: white;
-  text-align: center;
-  padding: 15px;
-  border-radius: 10px;
-  margin-top: 40px;
-  font-size: 14px;
-}
+  nav li {
+    margin: 0;
+  }
+  
+  nav a {
+    display: block;
+    padding: 15px 30px;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease;
+  }
+  
+  nav a:hover {
+    background-color: #c0392b;
+  }
+  
+  .hero-text {
+    font-size: 1.4rem;
+    line-height: 1.8;
+    text-align: center;
+    margin: 40px 0;
+    padding: 30px;
+    background-color: #d4edda;
+    border-radius: 10px;
+    color: #2c5530;
+    font-weight: 300;
+  }
+  
+  /* Grid Container for Sandwiches */
+  .sandwich-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin: 40px 0;
+  }
+  
+  /* Individual Sandwich Card */
+  .sandwich-item {
+    background-color: #fff;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .sandwich-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .sandwich-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+  
+  .sandwich-item p {
+    color: #555;
+    line-height: 1.7;
+    font-size: 0.95rem;
+  }
+  
+  /* Footer Styles */
+  footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    margin-top: 50px;
+    font-size: 1.1rem;
+    font-style: italic;
+    border-radius: 5px;
+  }
+  
 </style>
 </head>
+<body><h1 id="site-title">Greg’s Banh Mi</h1>
+<nav>
+ <ul>
+<li><a href="/">Home</a></li>
+<li><a href="/">Menu</a></li>
+<li><a href="/">About</a></li>
+<li><a href="/">Contact</a></li>   
+</ul>
+</nav>
 
-<body>
-  <h1 id="site-title">Greg’s Banh Mi</h1>
-
-  <nav>
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/">Menu</a></li>
-      <li><a href="/">About</a></li>
-      <li><a href="/">Contact</a></li>   
-    </ul>
-  </nav>
-
-  <h1>At Greg's Banh Mi, we're serving up the perfect marriage of French and Vietnamese culinary traditions—crispy-on-the-outside, pillowy-on-the-inside baguettes loaded with bold, fresh flavours that'll make your taste buds sing.</h1>
-
-  <!-- Sandwich Grid -->
-  <div class="sandwich-grid">
-    <div class="sandwich">
-      <img src="classic-pork.jpg" alt="Classic Pork Banh Mi">
-      <h2>Classic Pork Banh Mi</h2>
-      <p>Tender marinated pork topped with crisp pickled vegetables, fresh cilantro, and a smear of pâté on a perfectly crusty baguette. A traditional favorite that balances savory, sweet, and tangy flavors in every bite.</p>
+    <h1 class="hero-text">At Greg's Banh Mi, we're serving up the perfect marriage of French and Vietnamese culinary traditions—crispy-on-the-outside, pillowy-on-the-inside baguettes loaded with bold, fresh flavors that'll make your taste buds sing.</h1>
+    
+    <div class="sandwich-grid">
+      <div class="sandwich-item">
+        <img src="https://github.com/jiahanz35-a11y/exercise-6/blob/ad01e302b0e02ed47dc16d0757d9f963e92f8c5b/banh-mi.jpg?raw=true" alt="Classic Pork Banh Mi">
+        <h2>Classic Pork Banh Mi</h2>
+        <p>Tender marinated pork topped with crisp pickled vegetables, fresh cilantro, and a smear of pâté on a perfectly crusty baguette. A traditional favorite that balances savory, sweet, and tangy flavors in every bite.</p>
+      </div>
+      
+      <div class="sandwich-item">
+        <img src="https://github.com/jiahanz35-a11y/exercise-6/blob/ad01e302b0e02ed47dc16d0757d9f963e92f8c5b/banh-mi.jpg?raw=true">
+        <h2>Lemongrass Chicken Banh Mi</h2>
+        <p>Grilled chicken marinated in fragrant lemongrass and garlic, paired with cucumber, jalapeños, and our house mayo. Light yet satisfying, this sandwich brings bright, aromatic flavors that'll transport you straight to Saigon.</p>
+      </div>
+      
+      <div class="sandwich-item">
+        <img src="https://github.com/jiahanz35-a11y/exercise-6/blob/ad01e302b0e02ed47dc16d0757d9f963e92f8c5b/banh-mi.jpg?raw=true">
+        <h2>Tofu Banh Mi</h2>
+        <p>Crispy pan-fried tofu glazed in sweet soy sauce, layered with daikon, carrots, and fresh herbs for a vegetarian delight. Proof that plant-based can be just as bold and craveable as any meat-filled sandwich.</p>
+      </div>
+      
+      <div class="sandwich-item">
+        <img src="https://github.com/jiahanz35-a11y/exercise-6/blob/ad01e302b0e02ed47dc16d0757d9f963e92f8c5b/banh-mi.jpg?raw=true" alt="Five-Spice Beef Banh Mi">
+        <h2>Five-Spice Beef Banh Mi</h2>
+        <p>Thinly sliced beef seared with aromatic five-spice blend and served with pickled vegetables and spicy Sriracha mayo. Rich, warming spices meet cool, crunchy toppings for an unforgettable flavor experience.</p>
+      </div>
     </div>
-
-    <div class="sandwich">
-      <img src="lemongrass-chicken.jpg" alt="Lemongrass Chicken Banh Mi">
-      <h2>Lemongrass Chicken Banh Mi</h2>
-      <p>Grilled chicken marinated in fragrant lemongrass and garlic, paired with cucumber, jalapeños, and our house mayo. Light yet satisfying, this sandwich brings bright, aromatic flavors that'll transport you straight to Saigon.</p>
-    </div>
-
-    <div class="sandwich">
-      <img src="tofu.jpg" alt="Tofu Banh Mi">
-      <h2>Tofu Banh Mi</h2>
-      <p>Crispy pan-fried tofu glazed in sweet soy sauce, layered with daikon, carrots, and fresh herbs for a vegetarian delight. Proof that plant-based can be just as bold and craveable as any meat-filled sandwich.</p>
-    </div>
-
-    <div class="sandwich">
-      <img src="five-spice-beef.jpg" alt="Five-Spice Beef Banh Mi">
-      <h2>Five-Spice Beef Banh Mi</h2>
-      <p>Thinly sliced beef seared with aromatic five-spice blend and served with pickled vegetables and spicy Sriracha mayo. Rich, warming spices meet cool, crunchy toppings for an unforgettable flavor experience.</p>
-    </div>
-  </div>
-
-  <footer>
-    Because life's too short for boring sandwiches. Greg's got you covered—one crispy baguette at a time.
-  </footer>
+    
+    <footer>Because life's too short for boring sandwiches. Greg's got you covered—one crispy baguette at a time.</footer>
+  </div>  
 </body>
 </html>
